@@ -1,6 +1,6 @@
 # tracking-correios
 
-Módulo para consulta do rastreio de pacotes do Correios. Consulta diretamento a API do Correios (SRO).
+Módulo para consulta do rastreio de pacotes do Correios. Acessa diretamento a API do Correios (SRO).
 
 ## Instalação
 
@@ -33,8 +33,7 @@ TrackingCorreios.track( 'DU897123996BR' )
 TrackingCorreios.track( [ 'DU897123996BR' ] )
     .then(console.log)
 
-/*
-{
+> {
    "numero":"DU897123996BR",
    "sigla":"DU",
    "nome":"ENCOMENDA E-SEDEX",
@@ -55,10 +54,19 @@ TrackingCorreios.track( [ 'DU897123996BR' ] )
       }, { ... }, { ... }, { ... }
    ]
 }
-*/
 ```
 
 Exemplo de código válido, porém sem rastreio
+
+```js
+TrackingCorreios.track([ 'SB231363632BR' ])
+    .then(console.log)
+
+> {
+    numero: 'SB231363632BR',
+    erro: 'Objeto não encontrado na base de dados dos Correios.'
+  }
+```
 
 Para consultas de vários códigos simultâneos:
 
@@ -66,23 +74,23 @@ Para consultas de vários códigos simultâneos:
 TrackingCorreios.track([ 'DU897123996BR', 'PN273603577BR', 'DU910139445BR' ])
     .then(console.log)
 
-/*
-[ { numero: 'DU897123996BR',
-    sigla: 'DU',
-    nome: 'ENCOMENDA E-SEDEX',
-    categoria: 'E-SEDEX',
-    evento: [ {...}, [Object], [Object], [Object], [Object], [Object] ] },
-  { numero: 'PN273603577BR',
-    sigla: 'PN',
-    nome: 'ENCOMENDA PAC (ETIQ LOGICA)',
-    categoria: 'ENCOMENDA PAC',
-    evento: [ [Object], [Object], [Object], [Object], [Object], [Object] ] },
-  { numero: 'DU910139445BR',
-    sigla: 'DU',
-    nome: 'ENCOMENDA E-SEDEX',
-    categoria: 'E-SEDEX',
-    evento: [ [Object], [Object], [Object], [Object], [Object] ] } ]
-*/
+> [
+    { numero: 'DU897123996BR',
+        sigla: 'DU',
+        nome: 'ENCOMENDA E-SEDEX',
+        categoria: 'E-SEDEX',
+        evento: [ {...}, [Object], [Object], [Object], [Object], [Object] ] },
+    { numero: 'PN273603577BR',
+        sigla: 'PN',
+        nome: 'ENCOMENDA PAC (ETIQ LOGICA)',
+        categoria: 'ENCOMENDA PAC',
+        evento: [ [Object], [Object], [Object], [Object], [Object], [Object] ] },
+    { numero: 'DU910139445BR',
+        sigla: 'DU',
+        nome: 'ENCOMENDA E-SEDEX',
+        categoria: 'E-SEDEX',
+        evento: [ [Object], [Object], [Object], [Object], [Object] ] }
+  ]
 ```
 
 O método `track` validará automaticamente os objetos, removendo os inválidos:
@@ -91,14 +99,13 @@ O método `track` validará automaticamente os objetos, removendo os inválidos:
 TrackingCorreios.track([ 'DU897123996BR', 'invalido' ])
     .then(console.log)
 
-/*
-{ "numero":"DU897123996BR",
-   "sigla":"DU",
-   "nome":"ENCOMENDA E-SEDEX",
-   "categoria":"E-SEDEX",
-   "evento": [...]
-}
-*/
+> {
+    "numero":"DU897123996BR",
+    "sigla":"DU",
+    "nome":"ENCOMENDA E-SEDEX",
+    "categoria":"E-SEDEX",
+    "evento": [...]
+  }
 ```
 
 Se não tiver nenhum objeto válido a Promise rejeitará com `TrackingError`:
@@ -107,15 +114,15 @@ Se não tiver nenhum objeto válido a Promise rejeitará com `TrackingError`:
 TrackingCorreios.track('invalido')
     .catch(console.log)
 
-/*
-{ [TrackingError: Erro ao validar os objetos.]
-  name: 'TrackingError',
-  message: 'Erro ao validar os objetos.',
-  type: 'validation_error',
-  errors:
-   [ { message: 'Nenhum objeto válido para pesquisa.',
-       service: 'objects_validation' } ] }
-*/
+> {
+    [TrackingError: Erro ao validar os objetos.]
+        name: 'TrackingError',
+        message: 'Erro ao validar os objetos.',
+        type: 'validation_error',
+        errors:
+        [ { message: 'Nenhum objeto válido para pesquisa.',
+            service: 'objects_validation' } ]
+  }
 ```
 
 O método `track` retorna uma Promise, portanto o tratamento de erros deve ser feito pelo `.catch`. Exemplo de API fora do ar:
@@ -125,15 +132,15 @@ TrackingCorreios.track('DU897123996BR')
     .then(console.log)
     .catch(console.log)
 
-/*
-{ [TrackingError: Erro ao se conectar ao o serviço dos Correios.]
-  name: 'TrackingError',
-  message: 'Erro ao se conectar com o serviço dos Correios.',
-  type: 'system',
-  errors:
-   [ { message: 'Ocorreu um erro ao se conectar ao serviço dos Correios: request to https://webservice.correios.com.br/service/rastro failed, reason: connect ECONNREFUSED webservice.correios.com.br',
-       service: 'service_error' } ] }
-*/
+> {
+    [TrackingError: Erro ao se conectar ao o serviço dos Correios.]
+        name: 'TrackingError',
+        message: 'Erro ao se conectar com o serviço dos Correios.',
+        type: 'system',
+        errors:
+        [ { message: 'Ocorreu um erro ao se conectar ao serviço dos Correios: request to https://webservice.correios.com.br/service/rastro failed, reason: connect ECONNREFUSED webservice.correios.com.br',
+            service: 'service_error' } ]
+  }
 ```
 
 Pode também passar um objeto de configuração como segundo parâmetro.
