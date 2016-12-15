@@ -1,5 +1,7 @@
 # tracking-correios
 
+[![Build Status](https://travis-ci.org/gabrielboliveira/tracking-correios.svg?branch=master)](https://travis-ci.org/gabrielboliveira/tracking-correios)
+
 Módulo para consulta do rastreio de pacotes do Correios. Acessa diretamento a API do Correios (SRO).
 
 ## Instalação
