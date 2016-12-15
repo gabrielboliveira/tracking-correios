@@ -1,0 +1,199 @@
+[
+   {
+      "numero":"DU897123996BR",
+      "sigla":"DU",
+      "nome":"ENCOMENDA E-SEDEX",
+      "categoria":"E-SEDEX",
+      "evento":[
+         {
+            "tipo":"BDE",
+            "status":"01",
+            "data":"12/12/2016",
+            "hora":"19:06",
+            "descricao":"Objeto entregue ao destinatário",
+            "recebedor":"",
+            "documento":"",
+            "comentario":"",
+            "local":"CEE BAURU",
+            "codigo":"17034972",
+            "cidade":"Bauru",
+            "uf":"SP"
+         },
+         {
+            "tipo":"OEC",
+            "status":"01",
+            "data":"12/12/2016",
+            "hora":"10:30",
+            "descricao":"Objeto saiu para entrega ao destinatário",
+            "local":"CEE BAURU",
+            "codigo":"17034972",
+            "cidade":"Bauru",
+            "uf":"SP"
+         },
+         {
+            "tipo":"RO",
+            "status":"01",
+            "data":"12/12/2016",
+            "hora":"04:34",
+            "descricao":"Objeto encaminhado",
+            "local":"CTCE BAURU",
+            "codigo":"17034970",
+            "cidade":"Bauru",
+            "uf":"SP",
+            "destino":{
+               "local":"CEE BAURU",
+               "codigo":"17034972",
+               "cidade":"Bauru",
+               "bairro":"Distrito Industrial",
+               "uf":"SP"
+            }
+         },
+         {
+            "tipo":"RO",
+            "status":"01",
+            "data":"08/12/2016",
+            "hora":"21:13",
+            "descricao":"Objeto encaminhado",
+            "local":"CTCE LONDRINA",
+            "codigo":"86066970",
+            "cidade":"LONDRINA",
+            "uf":"PR",
+            "destino":{
+               "local":"CTCE BAURU",
+               "codigo":"17034970",
+               "cidade":"Bauru",
+               "bairro":"Distrito  Industrial",
+               "uf":"SP"
+            }
+         },
+         {
+            "tipo":"RO",
+            "status":"01",
+            "data":"08/12/2016",
+            "hora":"13:37",
+            "descricao":"Objeto encaminhado",
+            "local":"AGF JARDIM ALVORADA",
+            "codigo":"87030981",
+            "cidade":"Maringa",
+            "uf":"PR",
+            "destino":{
+               "local":"CTCE LONDRINA",
+               "codigo":"86066970",
+               "cidade":"LONDRINA",
+               "bairro":"JARDIM COLUMBIA",
+               "uf":"PR"
+            }
+         },
+         {
+            "tipo":"PO",
+            "status":"09",
+            "data":"07/12/2016",
+            "hora":"17:37",
+            "descricao":"Objeto postado após o horário limite da agência",
+            "detalhe":"Objeto sujeito a encaminhamento no próximo dia útil",
+            "local":"AGF JARDIM ALVORADA",
+            "codigo":"87030981",
+            "cidade":"Maringa",
+            "uf":"PR"
+         }
+      ]
+   },
+   {
+      "numero":"PN273603577BR",
+      "sigla":"PN",
+      "nome":"ENCOMENDA PAC (ETIQ LOGICA)",
+      "categoria":"ENCOMENDA PAC",
+      "evento":[
+         {
+            "tipo":"BDE",
+            "status":"01",
+            "data":"28/10/2016",
+            "hora":"18:24",
+            "descricao":"Objeto entregue ao destinatário",
+            "recebedor":"",
+            "documento":"",
+            "comentario":"",
+            "local":"CEE BAURU",
+            "codigo":"17034972",
+            "cidade":"Bauru",
+            "uf":"SP"
+         },
+         {
+            "tipo":"OEC",
+            "status":"01",
+            "data":"28/10/2016",
+            "hora":"11:29",
+            "descricao":"Objeto saiu para entrega ao destinatário",
+            "local":"CEE BAURU",
+            "codigo":"17034972",
+            "cidade":"Bauru",
+            "uf":"SP"
+         },
+         {
+            "tipo":"RO",
+            "status":"01",
+            "data":"27/10/2016",
+            "hora":"13:02",
+            "descricao":"Objeto encaminhado",
+            "local":"CTCE BAURU",
+            "codigo":"17034970",
+            "cidade":"Bauru",
+            "uf":"SP",
+            "destino":{
+               "local":"CEE BAURU",
+               "codigo":"17034972",
+               "cidade":"Bauru",
+               "bairro":"Distrito Industrial",
+               "uf":"SP"
+            }
+         },
+         {
+            "tipo":"DO",
+            "status":"01",
+            "data":"26/10/2016",
+            "hora":"19:08",
+            "descricao":"Objeto encaminhado",
+            "local":"AGF OZANAN",
+            "codigo":"13215971",
+            "cidade":"Jundiai",
+            "uf":"SP",
+            "destino":{
+               "local":"CTE CAMPINAS",
+               "codigo":"13050971",
+               "cidade":"INDAIATUBA",
+               "bairro":"HELVETIA",
+               "uf":"SP"
+            }
+         },
+         {
+            "tipo":"RO",
+            "status":"01",
+            "data":"26/10/2016",
+            "hora":"14:34",
+            "descricao":"Objeto encaminhado",
+            "local":"CTE CAMPINAS",
+            "codigo":"13050971",
+            "cidade":"INDAIATUBA",
+            "uf":"SP",
+            "destino":{
+               "local":"CTCE BAURU",
+               "codigo":"17034970",
+               "cidade":"Bauru",
+               "bairro":"Distrito  Industrial",
+               "uf":"SP"
+            }
+         },
+         {
+            "tipo":"PO",
+            "status":"01",
+            "data":"25/10/2016",
+            "hora":"16:35",
+            "descricao":"Objeto postado",
+            "local":"AGF OZANAN",
+            "codigo":"13215971",
+            "cidade":"Jundiai",
+            "uf":"SP"
+         }
+      ]
+   }
+]

@@ -1,0 +1,110 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+   <soapenv:Header>
+      <X-OPNET-Transaction-Trace:X-OPNET-Transaction-Trace xmlns:X-OPNET-Transaction-Trace="http://opnet.com">pid=36263,requestid=2cb01ac165f9c688f949b4a985e0531286a43f3af2e7fbe9</X-OPNET-Transaction-Trace:X-OPNET-Transaction-Trace>
+   </soapenv:Header>
+   <soapenv:Body>
+      <ns2:buscaEventosListaResponse xmlns:ns2="http://resource.webservice.correios.com.br/">
+         <return>
+            <versao>2.0</versao>
+            <qtd>1</qtd>
+            <objeto>
+               <numero>DU897123996BR</numero>
+               <sigla>DU</sigla>
+               <nome>ENCOMENDA E-SEDEX</nome>
+               <categoria>E-SEDEX</categoria>
+               <evento>
+                  <tipo>BDE</tipo>
+                  <status>01</status>
+                  <data>12/12/2016</data>
+                  <hora>19:06</hora>
+                  <descricao>Objeto entregue ao destinatário</descricao>
+                  <recebedor></recebedor>
+                  <documento></documento>
+                  <comentario></comentario>
+                  <local>CEE BAURU</local>
+                  <codigo>17034972</codigo>
+                  <cidade>Bauru</cidade>
+                  <uf>SP</uf>
+               </evento>
+               <evento>
+                  <tipo>OEC</tipo>
+                  <status>01</status>
+                  <data>12/12/2016</data>
+                  <hora>10:30</hora>
+                  <descricao>Objeto saiu para entrega ao destinatário</descricao>
+                  <local>CEE BAURU</local>
+                  <codigo>17034972</codigo>
+                  <cidade>Bauru</cidade>
+                  <uf>SP</uf>
+               </evento>
+               <evento>
+                  <tipo>RO</tipo>
+                  <status>01</status>
+                  <data>12/12/2016</data>
+                  <hora>04:34</hora>
+                  <descricao>Objeto encaminhado</descricao>
+                  <local>CTCE BAURU</local>
+                  <codigo>17034970</codigo>
+                  <cidade>Bauru</cidade>
+                  <uf>SP</uf>
+                  <destino>
+                     <local>CEE BAURU</local>
+                     <codigo>17034972</codigo>
+                     <cidade>Bauru</cidade>
+                     <bairro>Distrito Industrial</bairro>
+                     <uf>SP</uf>
+                  </destino>
+               </evento>
+               <evento>
+                  <tipo>RO</tipo>
+                  <status>01</status>
+                  <data>08/12/2016</data>
+                  <hora>21:13</hora>
+                  <descricao>Objeto encaminhado</descricao>
+                  <local>CTCE LONDRINA</local>
+                  <codigo>86066970</codigo>
+                  <cidade>LONDRINA</cidade>
+                  <uf>PR</uf>
+                  <destino>
+                     <local>CTCE BAURU</local>
+                     <codigo>17034970</codigo>
+                     <cidade>Bauru</cidade>
+                     <bairro>Distrito  Industrial</bairro>
+                     <uf>SP</uf>
+                  </destino>
+               </evento>
+               <evento>
+                  <tipo>RO</tipo>
+                  <status>01</status>
+                  <data>08/12/2016</data>
+                  <hora>13:37</hora>
+                  <descricao>Objeto encaminhado</descricao>
+                  <local>AGF JARDIM ALVORADA</local>
+                  <codigo>87030981</codigo>
+                  <cidade>Maringa</cidade>
+                  <uf>PR</uf>
+                  <destino>
+                     <local>CTCE LONDRINA</local>
+                     <codigo>86066970</codigo>
+                     <cidade>LONDRINA</cidade>
+                     <bairro>JARDIM COLUMBIA</bairro>
+                     <uf>PR</uf>
+                  </destino>
+               </evento>
+               <evento>
+                  <tipo>PO</tipo>
+                  <status>09</status>
+                  <data>07/12/2016</data>
+                  <hora>17:37</hora>
+                  <descricao>Objeto postado após o horário limite da agência</descricao>
+                  <detalhe>Objeto sujeito a encaminhamento no próximo dia útil</detalhe>
+                  <local>AGF JARDIM ALVORADA</local>
+                  <codigo>87030981</codigo>
+                  <cidade>Maringa</cidade>
+                  <uf>PR</uf>
+               </evento>
+            </objeto>
+         </return>
+      </ns2:buscaEventosListaResponse>
+   </soapenv:Body>
+</soapenv:Envelope>
