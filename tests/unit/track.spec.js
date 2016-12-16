@@ -37,7 +37,7 @@ describe('tracking-correios (unit)', () => {
 
     describe('when "track" invoked', () => {
         it('should return a Promise', () => {
-            nock('http://webservice.correios.com.br')
+            nock('https://webservice.correios.com.br')
                 .post('/service/rastro')
                 .replyWithFile(200, path.join(__dirname, '/fixtures/response-valid-one.xml'))
 
@@ -49,14 +49,14 @@ describe('tracking-correios (unit)', () => {
         describe('with one valid tracking number', () => {
             let testFile = require('../responses/valid-one.json')
             it('should fulfill with correct tracking information using simple string', () => {
-                nock('http://webservice.correios.com.br')
+                nock('https://webservice.correios.com.br')
                     .post('/service/rastro')
                     .replyWithFile(200, path.join(__dirname, '/fixtures/response-valid-one.xml'))
 
                 return expect(Tracking.track('DU897123996BR')).to.eventually.deep.equal(testFile)
             })
             it('should fulfill with correct tracking information using array', () => {
-                nock('http://webservice.correios.com.br')
+                nock('https://webservice.correios.com.br')
                     .post('/service/rastro')
                     .replyWithFile(200, path.join(__dirname, '/fixtures/response-valid-one.xml'))
 
@@ -67,7 +67,7 @@ describe('tracking-correios (unit)', () => {
         describe('with two valid tracking numbers', () => {
             let testFile = require('../responses/valid-two.json')
             it('should fulfill with correct tracking information using array', () => {
-                nock('http://webservice.correios.com.br')
+                nock('https://webservice.correios.com.br')
                     .post('/service/rastro')
                     .replyWithFile(200, path.join(__dirname, '/fixtures/response-valid-two.xml'))
 
