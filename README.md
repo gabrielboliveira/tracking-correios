@@ -35,7 +35,7 @@ TrackingCorreios.track( 'DU897123996BR' )
 TrackingCorreios.track( [ 'DU897123996BR' ] )
     .then(console.log)
 
-> {
+> [ {
    "numero":"DU897123996BR",
    "sigla":"DU",
    "nome":"ENCOMENDA E-SEDEX",
@@ -55,7 +55,7 @@ TrackingCorreios.track( [ 'DU897123996BR' ] )
          "uf":"SP"
       }, { ... }, { ... }, { ... }
    ]
-}
+} ]
 ```
 
 Exemplo de código válido, porém sem rastreio
@@ -64,10 +64,10 @@ Exemplo de código válido, porém sem rastreio
 TrackingCorreios.track([ 'SB231363632BR' ])
     .then(console.log)
 
-> {
+> [ {
     numero: 'SB231363632BR',
     erro: 'Objeto não encontrado na base de dados dos Correios.'
-  }
+} ]
 ```
 
 Para consultas de vários códigos simultâneos:
@@ -101,13 +101,13 @@ O método `track` validará automaticamente os objetos, removendo os inválidos:
 TrackingCorreios.track([ 'DU897123996BR', 'invalido' ])
     .then(console.log)
 
-> {
+> [ {
     "numero":"DU897123996BR",
     "sigla":"DU",
     "nome":"ENCOMENDA E-SEDEX",
     "categoria":"E-SEDEX",
     "evento": [...]
-  }
+} ]
 ```
 
 Se não tiver nenhum objeto válido a Promise rejeitará com `TrackingError`:

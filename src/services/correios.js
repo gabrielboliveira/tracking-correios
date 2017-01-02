@@ -132,9 +132,6 @@ function fetchTracking (objects, configParams) {
         }
 
         function resolvePromise (objects) {
-            if(objects && objects.length === 1) {
-                objects = objects[0]
-            }
             resolve(objects)
         }
 
