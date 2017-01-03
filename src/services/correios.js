@@ -64,6 +64,7 @@ function fetchTracking (objects, configParams) {
                 return response.text()
                         .then(parseXML)
                         .then(extractSuccessObject)
+                        .then(fixEvent)
             }
 
             return response.text()
@@ -101,6 +102,15 @@ function fetchTracking (objects, configParams) {
 
         function extractErrorObject (object) {
             return getSubObject(object, 'soapenv:Envelope.soapenv:Body[0].soapenv:Fault[0].faultstring[0]')
+        }
+
+        function fixEvent(object) {
+            return object.map( item => {
+                if (Helpers.isObject(item.evento)) {
+                    item.evento = [ item.evento ]
+                }
+                return item
+            } )
         }
 
         function throwErrorObject (faultString) {
