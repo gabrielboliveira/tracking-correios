@@ -106,9 +106,7 @@ function fetchTracking (objects, configParams) {
 
         function fixEvent(object) {
             return object.map( item => {
-                if (Helpers.isObject(item.evento)) {
-                    item.evento = [ item.evento ]
-                }
+                item.evento = Helpers.arrayOf(item.evento)
                 return item
             } )
         }
