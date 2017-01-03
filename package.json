@@ -20,7 +20,9 @@
     "url": "https://github.com/gabrielboliveira/tracking-correios/issues"
   },
   "dependencies": {
-    "bluebird": "^3.4.6",
+    "babel-core": "^6.21.0",
+    "bluebird": "^3.4.7",
+    "chai-subset": "^1.4.0",
     "isomorphic-fetch": "^2.2.1",
     "lodash.assignin": "^4.2.0",
     "lodash.chunk": "^4.2.0",
