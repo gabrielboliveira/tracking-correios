@@ -1,6 +1,6 @@
 {
   "name": "tracking-correios",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Módulo para consulta do rastreio de pacotes do Correios",
   "main": "dist/track.js",
   "scripts": {
