@@ -45,7 +45,7 @@
                   <descricao>Objeto encaminhado</descricao>
                   <local>CTCE BAURU</local>
                   <codigo>17034970</codigo>
-                  <cidade>Bauru</cidade>
+                  <cidade>BAURU</cidade>
                   <uf>SP</uf>
                   <destino>
                      <local>CEE BAURU</local>
@@ -68,8 +68,8 @@
                   <destino>
                      <local>CTCE BAURU</local>
                      <codigo>17034970</codigo>
-                     <cidade>Bauru</cidade>
-                     <bairro>Distrito  Industrial</bairro>
+                     <cidade>BAURU</cidade>
+                     <bairro>Dist Indust Domingos Biancardi</bairro>
                      <uf>SP</uf>
                   </destino>
                </evento>
