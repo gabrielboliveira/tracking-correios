@@ -82,6 +82,7 @@ const validInitials = {
     'FE': 'Encomenda FNDE',
     'FF': 'Objeto registrado (DETRAN)',
     'FH': 'FAC registrado com AR Digital',
+    'FJ': 'Remessa Econômica Talão/Cartão',
     'FM': 'FAC monitorado',
     'FR': 'FAC registrado',
     'IA': 'Logística Integrada (agendado / avulso)',

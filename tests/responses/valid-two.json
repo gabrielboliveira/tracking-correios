@@ -38,7 +38,7 @@
         "descricao": "Objeto encaminhado",
         "local": "CTCE BAURU",
         "codigo": "17034970",
-        "cidade": "Bauru",
+        "cidade": "BAURU",
         "uf": "SP",
         "destino": {
           "local": "CEE BAURU",
@@ -61,8 +61,8 @@
         "destino": {
           "local": "CTCE BAURU",
           "codigo": "17034970",
-          "cidade": "Bauru",
-          "bairro": "Distrito  Industrial",
+          "cidade": "BAURU",
+          "bairro": "Dist Indust Domingos Biancardi",
           "uf": "SP"
         }
       },
@@ -137,7 +137,7 @@
         "descricao": "Objeto encaminhado",
         "local": "CTCE BAURU",
         "codigo": "17034970",
-        "cidade": "Bauru",
+        "cidade": "BAURU",
         "uf": "SP",
         "destino": {
           "local": "CEE BAURU",
@@ -178,8 +178,8 @@
         "destino": {
           "local": "CTCE BAURU",
           "codigo": "17034970",
-          "cidade": "Bauru",
-          "bairro": "Distrito  Industrial",
+          "cidade": "BAURU",
+          "bairro": "Dist Indust Domingos Biancardi",
           "uf": "SP"
         }
       },
