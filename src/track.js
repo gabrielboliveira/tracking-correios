@@ -25,7 +25,8 @@ function track (objects, configParams = {}) {
         type: "L",
         result: "T",
         language: "101",
-        limit: 5000
+        limit: 5000,
+        filter: true
     }, configParams)
 
     return new Promise( (resolve, reject) => {
@@ -53,7 +54,8 @@ function track (objects, configParams = {}) {
         function validateParams (params) {
             if ( params.configParams.type && params.configParams.result &&
                     params.configParams.language && params.configParams.limit > 0 &&
-                    params.configParams.limit <= MAX_OBJECTS_CORREIOS)
+                    params.configParams.limit <= MAX_OBJECTS_CORREIOS &&
+                    typeof params.configParams.filter === 'boolean')
             {
                 return params
             }
@@ -62,7 +64,7 @@ function track (objects, configParams = {}) {
                 message: 'Erro ao validar os parâmetros.',
                 type: 'validation_error',
                 errors: [{
-                    message: 'Type, result e language não podem ser undefined.',
+                    message: 'Type, result e language não podem ser undefined, filter deve ser boolean',
                     service: 'param_validation'
                 }]
             })
@@ -71,7 +73,9 @@ function track (objects, configParams = {}) {
         function filterObjects (params) {
             params.objects = Helpers.arrayOf(params.objects)
 
-            params.objects = filter(params.objects)
+            if(params.configParams.filter) {
+                params.objects = filter(params.objects)
+            }
 
             return params
         }

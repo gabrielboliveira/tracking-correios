@@ -182,17 +182,6 @@
           "bairro": "Dist Indust Domingos Biancardi",
           "uf": "SP"
         }
-      },
-      {
-        "tipo": "PO",
-        "status": "01",
-        "data": "25/10/2016",
-        "hora": "16:35",
-        "descricao": "Objeto postado",
-        "local": "AGF OZANAN",
-        "codigo": "13215971",
-        "cidade": "Jundiai",
-        "uf": "SP"
       }
     ]
   }

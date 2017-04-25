@@ -188,17 +188,6 @@
                      <uf>SP</uf>
                   </destino>
                </evento>
-               <evento>
-                  <tipo>PO</tipo>
-                  <status>01</status>
-                  <data>25/10/2016</data>
-                  <hora>16:35</hora>
-                  <descricao>Objeto postado</descricao>
-                  <local>AGF OZANAN</local>
-                  <codigo>13215971</codigo>
-                  <cidade>Jundiai</cidade>
-                  <uf>SP</uf>
-               </evento>
             </objeto>
          </return>
       </ns2:buscaEventosListaResponse>

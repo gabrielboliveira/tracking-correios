@@ -128,6 +128,18 @@ TrackingCorreios.track('invalido')
   }
 ```
 
+Se não quiser filtrar, use a configuração `filter`:
+
+```js
+TrackingCorreios.track('invalido', { filter: false })
+    .catch(console.log)
+
+> [ {
+    numero: 'invalido',
+    erro: 'Objeto não encontrado na base de dados dos Correios.'
+} ]
+```
+
 O método `track` retorna uma Promise, portanto o tratamento de erros deve ser feito pelo `.catch`. Exemplo de API fora do ar:
 
 ```js
@@ -153,6 +165,7 @@ Pode também passar um objeto de configuração como segundo parâmetro.
 TrackingCorreios.track('DU897123996BR', {
         username: undefined,
         password: undefined,
+        filter: true,
         type: "L",
         result: "T",
         language: "101",
@@ -163,6 +176,8 @@ TrackingCorreios.track('DU897123996BR', {
 Os parâmetros `username`, `password`, `type`, `result` e `language` serão enviados a API dos Correios.
 
 O parâmetro `limit` indica a quantidade máxima de objetos a ser enviado por requisição. Se passar 8 mil objetos e o limite for 5 mil, o módulo fará duas requisições. Se passar mil objetos e o limite for 1, fará mil requisições.
+
+O parâmetro `filter` indica se deve realizar a filtragem de pacotes válidos antes de acessar a API do Correios.
 
 As requisições não são paralelas, serão realizadas uma após a outra. A Promise só resolverá quando todas as requisições terminarem.
 
