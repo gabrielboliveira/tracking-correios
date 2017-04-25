@@ -53,6 +53,7 @@ const validInitials = {
     'DV': 'SEDEX c/ AR digital',
     'DW': 'Encomenda SEDEX (Etiqueta Lógica)',
     'DX': 'SEDEX 10',
+    'DY': 'Encomenda SEDEX (Etiqueta Física)',
     'EA': 'Encomenda Internacional - EMS',
     'EB': 'Encomenda Internacional - EMS',
     'EC': 'PAC',
