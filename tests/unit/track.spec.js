@@ -74,6 +74,19 @@ describe('tracking-correios (unit)', () => {
                 return expect(Tracking.track(['DU897123996BR', 'PN273603577BR'])).to.eventually.deep.equal(testFile)
             })
         })
+
+        describe('when Correios API is out of service', () => {
+            it('should reject with TrackingError', () => {
+                nock('https://webservice.correios.com.br')
+                    .post('/service/rastro')
+                    .replyWithFile(500, path.join(__dirname, '/fixtures/response-error-one.xml'))
+
+                return expect(Tracking.track('DU897123996BR')).to.eventually
+                    .be.rejectedWith("Erro no serviço do Correios.")
+                    .and.be.an.instanceOf(TrackingError)
+                    .and.have.property('type', 'service_error')
+            })
+        })
     })
 
     describe('when "validate" invoked', () => {

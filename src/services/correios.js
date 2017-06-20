@@ -92,23 +92,22 @@ function fetchTracking (objects, configParams) {
             })
         }
 
-        function getSubObject (object, stringToSearch) {
-            return _get(object, stringToSearch).map(Helpers.expand)
-        }
-
         function extractSuccessObject (object) {
-            return getSubObject(object, 'soapenv:Envelope.soapenv:Body[0].ns2:buscaEventosListaResponse[0].return[0].objeto')
+            return _get(
+                object,
+                'soapenv:Envelope.soapenv:Body[0].ns2:buscaEventosListaResponse[0].return[0].objeto'
+            ).map(Helpers.expand)
         }
 
         function extractErrorObject (object) {
-            return getSubObject(object, 'soapenv:Envelope.soapenv:Body[0].soapenv:Fault[0].faultstring[0]')
+            return Helpers.expand(_get(object, 'soapenv:Envelope.soapenv:Body[0].soapenv:Fault[0].faultstring[0]'))
         }
 
         function fixEvent(object) {
-            return object.map( item => {
+            return object.map(item => {
                 item.evento = Helpers.arrayOf(item.evento)
                 return item
-            } )
+            })
         }
 
         function throwErrorObject (faultString) {
