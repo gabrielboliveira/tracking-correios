@@ -1,4 +1,6 @@
 tests
 .editorconfig
 .jshintrc
-.DS_Store
+.travis.yml
+.babelrc
+index.js

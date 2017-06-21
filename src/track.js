@@ -20,8 +20,8 @@ function track (objects, configParams = {}) {
 
     // default params
     configParams = _extend({
-        username: undefined,
-        password: undefined,
+        username: "ECT",
+        password: "SRO",
         type: "L",
         result: "T",
         language: "101",
