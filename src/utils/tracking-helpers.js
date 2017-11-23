@@ -171,6 +171,7 @@ const validInitials = {
     'PL': 'PAC',
     'PN': 'PAC',
     'PO': 'PAC',
+    'PP': 'Encomenda',
     'PR': 'Reembolso Postal',
     'QQ': 'Objeto de teste (SIGEP Web)',
     'RA': 'Objeto registrado / prioritário',
