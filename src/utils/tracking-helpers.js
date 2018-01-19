@@ -157,6 +157,7 @@ const validInitials = {
     'NE': 'Tele Sena resgatada',
     'NX': 'EDEI Econômico (não urgente)',
     'OA': 'Encomenda SEDEX',
+    'OF': 'Etiqueta lógica SEDEX',
     'PA': 'Passaporte',
     'PB': 'PAC',
     'PC': 'PAC a Cobrar',
