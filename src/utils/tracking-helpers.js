@@ -170,6 +170,7 @@ const validInitials = {
     'PJ': 'PAC',
     'PK': 'PAC Extra Grande',
     'PL': 'PAC',
+    'PM': 'PAC',
     'PN': 'PAC',
     'PO': 'PAC',
     'PP': 'Encomenda',
