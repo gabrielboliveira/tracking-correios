@@ -181,7 +181,7 @@ O parâmetro `filter` indica se deve realizar a filtragem de pacotes válidos an
 
 As requisições não são paralelas, serão realizadas uma após a outra. A Promise só resolverá quando todas as requisições terminarem.
 
-**ATENÇÃO!**
+#### ATENÇÃO!
 
 O usuário padrão do sistema é `ECT`. Esse é um usuário de testes, por isso tem algumas limitações ([#15](https://github.com/gabrielboliveira/tracking-correios/issues/15), [#5](https://github.com/gabrielboliveira/tracking-correios/issues/5)). Só é possível fazer a consulta de 1 código por vez, e também só 1 evento é retornado. Para adquirir um usuário com mais permissões, é necessário ter um contrato com os Correios: http://www.correios.com.br/solucoes-empresariais/comercio-eletronico/sistema-de-rastreamento-de-objetos.
 
