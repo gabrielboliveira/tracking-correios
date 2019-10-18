@@ -1,6 +1,6 @@
 tests
 .editorconfig
 .jshintrc
-.travis.yml
+.github/
 .babelrc
 index.js
