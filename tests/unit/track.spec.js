@@ -203,7 +203,7 @@ describe('tracking-correios (unit)', () => {
 
         describe('with invalid object (wrong initials)', () => {
             it('should return false', () => {
-                expect(Tracking.isValid('AA123123123BR'))
+                expect(Tracking.isValid('ZZ123123123BR'))
                     .to.deep.equal(false)
             })
         })
