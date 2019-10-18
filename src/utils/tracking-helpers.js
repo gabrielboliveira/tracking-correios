@@ -2,6 +2,8 @@ const Helpers = require('./helpers')
 
 // https://www.correios.com.br/precisa-de-ajuda/como-rastrear-um-objeto/siglas-utilizadas-no-rastreamento-de-objeto
 const validInitials = {
+    'AA': 'Etiqueta Lógica SEDEX',
+    'AB': 'Etiqueta Lógica SEDEX',
     'AL': 'Agentes de leitura',
     'AR': 'Avisos de recebimento',
     'AS': 'Encomenda PAC - Ação Social',
@@ -183,6 +185,7 @@ const validInitials = {
     'OC': 'Encomenda SEDEX (Etiqueta Lógica)',
     'OD': 'Encomenda SEDEX (Etiqueta Física)',
     'OF': 'Etiqueta lógica SEDEX',
+    'OG': 'Etiqueta lógica SEDEX',
     'OH': 'Etiqueta lógica SEDEX',
     'PA': 'Passaporte',
     'PB': 'Encomenda PAC - Não Urgente',
@@ -200,10 +203,13 @@ const validInitials = {
     'PN': 'Encomenda PAC (Etiqueta Lógica)',
     'PO': 'Encomenda PAC (Etiqueta Lógica)',
     'PP': 'Etiqueta Lógica PAC',
+    'PQ': 'Etiqueta Lógica PAC Mini',
     'PR': 'Reembolso Postal - Cliente Avulso',
     'PS': 'Etiqueta Lógica PAC',
     'PT': 'Encomenda PAC',
-    'PU': 'Encomenda PAC (Etiqueta Lógica)',
+    'PU': 'Encomenda PAC',
+    'PV': 'Encomenda PAC',
+    'PX': 'Encomenda PAC',
     'QQ': 'Objeto de teste (SIGEP Web)',
     'RA': 'Registrado prioritário',
     'RB': 'Carta registrada',
@@ -287,9 +293,9 @@ function category(object) {
 
         case 'EM':
             let final = object.substr(object.length - 2, 2)
-            objectCategory = "Encomenda Internacional - EMS Importação"
-            if (final === "BR") {
-                objectCategory = "Encomenda Internacional - SEDEX Mundi"
+            objectCategory = 'Encomenda Internacional - EMS Importação'
+            if (final === 'BR') {
+                objectCategory = 'Encomenda Internacional - SEDEX Mundi'
             }
             break
 
