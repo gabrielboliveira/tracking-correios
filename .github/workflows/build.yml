@@ -1,0 +1,29 @@
+name: CI
+
+on: [push, pull_request]
+
+runs-on: ${{ matrix.os }}
+
+strategy:
+  matrix:
+    os: [macOS-latest, windows-latest, ubuntu-latest]
+    node: [4, 6, 8, 10, 12]
+
+jobs:
+  build:
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@master
+
+    - uses: actions/setup-node@v1
+        with:
+        node-version: ${{ matrix.node }}
+
+    - name: Install dependencies
+      run: yarn install
+
+    - name: Build
+      run: yarn build
+
+    - name: Test
+      run: yarn test
