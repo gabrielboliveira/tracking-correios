@@ -5,7 +5,7 @@ const Promise = require("bluebird")
 const fetch = require('isomorphic-fetch')
 fetch.Promise = Promise
 
-const _extend = require('lodash/assignin')
+const _extend = require('lodash/assignIn')
 const _get = require('lodash/get')
 const _chunk = require('lodash/chunk')
 const _flatten = require('lodash/flatten')
