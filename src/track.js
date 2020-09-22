@@ -2,9 +2,9 @@
 
 const Promise = require("bluebird")
 
-const _filter = require('lodash.filter')
-const _extend = require('lodash.assignin')
-const _difference = require('lodash.difference')
+const _filter = require('lodash/filter')
+const _extend = require('lodash/assignIn')
+const _difference = require('lodash/difference')
 
 const CorreiosAPI = require('./services/correios')
 
