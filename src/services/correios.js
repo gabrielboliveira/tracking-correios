@@ -1,29 +1,29 @@
-const fetch = require('isomorphic-fetch')
+const fetch = require('isomorphic-fetch');
 
-const _get = require('lodash/get')
-const _chunk = require('lodash/chunk')
-const _flatten = require('lodash/flatten')
+const _get = require('lodash/get');
+const _chunk = require('lodash/chunk');
+const _flatten = require('lodash/flatten');
 
-const { parseStringPromise } = require('xml2js')
+const { parseStringPromise } = require('xml2js');
 
-const { expand, arrayOf } = require('../utils/helpers')
-const TrackingError = require('../errors/tracking')
-const { CORREIOS_URL } = require('../utils/consts')
+const { expand, arrayOf } = require('../utils/helpers');
+const TrackingError = require('../errors/tracking');
+const { CORREIOS_URL } = require('../utils/consts');
 
 function fetchTracking (objects, configParams) {
 
-    return new Promise( (resolve, reject) => {
+    return new Promise((resolve, reject) => {
 
         Promise.resolve(objects)
             .then(fetchFromCorreios)
             .then(parseFetchOutput)
             .then(resolvePromise)
-            .catch(rejectWithError)
+            .catch(rejectWithError);
 
         function fetchFromCorreios (objects) {
-            let callsChunked = _chunk(objects, configParams.limit)
+            let callsChunked = _chunk(objects, configParams.limit);
 
-            return Promise.all(callsChunked.map(fetchFromAPI))
+            return Promise.all(callsChunked.map(fetchFromAPI));
         }
 
         function fetchFromAPI (objects) {
@@ -33,34 +33,34 @@ function fetchTracking (objects, configParams) {
                 mode: 'no-cors',
                 headers: {
                     'Content-Type': 'text/xml; charset=utf-8',
-                    'cache-control': 'no-cache'
-                }
-            }
+                    'cache-control': 'no-cache',
+                },
+            };
 
-            return fetch(CORREIOS_URL, options)
+            return fetch(CORREIOS_URL, options);
         }
 
-        function parseFetchOutput(responses) {
+        function parseFetchOutput (responses) {
             return Promise.all(responses.map(parseSingleFetch))
-                    .then(mergeAllResponses)
+                .then(mergeAllResponses);
         }
 
         function mergeAllResponses (responses) {
-            return _flatten(responses)
+            return _flatten(responses);
         }
 
         function parseSingleFetch (response) {
             if (response.ok) {
                 return response.text()
-                        .then(parseXML)
-                        .then(extractSuccessObject)
-                        .then(fixEvent)
+                    .then(parseXML)
+                    .then(extractSuccessObject)
+                    .then(fixEvent);
             }
 
             return response.text()
-                    .then(parseXML)
-                    .then(extractErrorObject)
-                    .then(throwErrorObject)
+                .then(parseXML)
+                .then(extractErrorObject)
+                .then(throwErrorObject);
         }
 
         function parseXML (text) {
@@ -70,27 +70,27 @@ function fetchTracking (objects, configParams) {
                     type: 'service_error',
                     errors: [{
                         message: 'Ocorreu um erro ao tratar o XML retornado pela API dos Correios.',
-                        service: 'parsing_error'
-                    }]
+                        service: 'parsing_error',
+                    }],
                 }));
         }
 
         function extractSuccessObject (object) {
             return _get(
                 object,
-                'soapenv:Envelope.soapenv:Body[0].ns2:buscaEventosListaResponse[0].return[0].objeto'
-            ).map(expand)
+                'soapenv:Envelope.soapenv:Body[0].ns2:buscaEventosListaResponse[0].return[0].objeto',
+            ).map(expand);
         }
 
         function extractErrorObject (object) {
-            return expand(_get(object, 'soapenv:Envelope.soapenv:Body[0].soapenv:Fault[0].faultstring[0]'))
+            return expand(_get(object, 'soapenv:Envelope.soapenv:Body[0].soapenv:Fault[0].faultstring[0]'));
         }
 
-        function fixEvent(object) {
+        function fixEvent (object) {
             return object.map(item => {
-                item.evento = arrayOf(item.evento)
-                return item
-            })
+                item.evento = arrayOf(item.evento);
+                return item;
+            });
         }
 
         function throwErrorObject (faultString) {
@@ -99,53 +99,53 @@ function fetchTracking (objects, configParams) {
                 type: 'service_error',
                 errors: [{
                     message: `O serviço do Correios retornou o seguinte erro: ${ faultString }`,
-                    service: 'service_error'
-                }]
-            })
+                    service: 'service_error',
+                }],
+            });
         }
 
         function createSOAPEnvelope (objects) {
-            let envelope = `<?xml version="1.0"?>\n<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:res="http://resource.webservice.correios.com.br/">\n   <soapenv:Header/>\n   <soapenv:Body>\n      <res:buscaEventosLista>\n`
+            let envelope = `<?xml version="1.0"?>\n<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:res="http://resource.webservice.correios.com.br/">\n   <soapenv:Header/>\n   <soapenv:Body>\n      <res:buscaEventosLista>\n`;
 
-            if(configParams.username && configParams.password) {
-                envelope += `         <usuario>${configParams.username}</usuario>\n         <senha>${configParams.password}</senha>\n`
+            if (configParams.username && configParams.password) {
+                envelope += `         <usuario>${configParams.username}</usuario>\n         <senha>${configParams.password}</senha>\n`;
             }
 
-            envelope += `         <tipo>${ configParams.type }</tipo>\n         <resultado>${ configParams.result }</resultado>\n         <lingua>${ configParams.language }</lingua>\n`
+            envelope += `         <tipo>${ configParams.type }</tipo>\n         <resultado>${ configParams.result }</resultado>\n         <lingua>${ configParams.language }</lingua>\n`;
 
-            objects.forEach((object) => {
-                envelope += `         <objetos>${ object }</objetos>\n`
-            })
+            objects.forEach(object => {
+                envelope += `         <objetos>${ object }</objetos>\n`;
+            });
 
-            envelope += `      </res:buscaEventosLista>\n   </soapenv:Body>\n</soapenv:Envelope>`
-            return envelope
+            envelope += `      </res:buscaEventosLista>\n   </soapenv:Body>\n</soapenv:Envelope>`;
+            return envelope;
         }
 
         function resolvePromise (objects) {
-            resolve(objects)
+            resolve(objects);
         }
 
         function rejectWithError (error = {}) {
             const trackingError = new TrackingError({
                 message: error.message,
                 type: error.type,
-                errors: error.errors
-            })
+                errors: error.errors,
+            });
 
             if (error.name === 'FetchError') {
-                trackingError.message = 'Erro ao se conectar ao o serviço dos Correios.'
+                trackingError.message = 'Erro ao se conectar ao o serviço dos Correios.';
                 trackingError.errors = [{
                     message: `Ocorreu um erro ao se conectar ao serviço dos Correios: ${ error.message }`,
-                    service: 'service_error'
-                }]
+                    service: 'service_error',
+                }];
             }
 
-            reject(trackingError)
+            reject(trackingError);
         }
-    })
+    });
 
 }
 
 module.exports = {
-    fetchTracking
-}
+    fetchTracking,
+};
