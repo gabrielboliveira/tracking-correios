@@ -1,9 +1,0 @@
-{
-    "node": true,
-    "mocha": true,
-    "esversion": 6,
-    "globalstrict": false,
-    "asi": true,
-    "curly": true,
-    "trailing": true
-}
