@@ -2,15 +2,11 @@ const _filter = require('lodash/filter')
 const _extend = require('lodash/assignIn')
 const _difference = require('lodash/difference')
 
-const CorreiosAPI = require('./services/correios')
-
 const TrackingError = require('./errors/tracking')
-
-const TrackingHelpers = require('./utils/tracking-helpers')
-
-const Helpers = require('./utils/helpers')
-
-const MAX_OBJECTS_CORREIOS = 5000
+const { fetchTracking } = require('./services/correios')
+const { isValid, category } = require('./utils/tracking-helpers')
+const { arrayOf } = require('./utils/helpers')
+const { MAX_OBJECTS_CORREIOS } = require('./utils/consts')
 
 function track (objects, configParams = {}) {
 
@@ -67,7 +63,7 @@ function track (objects, configParams = {}) {
         }
 
         function filterObjects (params) {
-            params.objects = Helpers.arrayOf(params.objects)
+            params.objects = arrayOf(params.objects)
 
             if(params.configParams.filter) {
                 params.objects = filter(params.objects)
@@ -92,14 +88,15 @@ function track (objects, configParams = {}) {
         }
 
         function fetchFromCorreios (params) {
-            return CorreiosAPI.fetchTracking(params.objects, params.configParams)
+            return fetchTracking(params.objects, params.configParams)
         }
     })
 }
 
 function validate (objects) {
-    objects = Helpers.arrayOf(objects)
-    let filtered = filter (objects)
+    objects = arrayOf(objects)
+    let filtered = filter(objects);
+
     return {
         valid: filtered,
         invalid: _difference(objects, filtered)
@@ -107,14 +104,15 @@ function validate (objects) {
 }
 
 function filter (objects) {
-    objects = Helpers.arrayOf(objects)
-    return _filter (objects, TrackingHelpers.isValid)
+    objects = arrayOf(objects)
+
+    return _filter(objects, isValid)
 }
 
 module.exports = {
     track,
     validate,
-    isValid: TrackingHelpers.isValid,
-    category: TrackingHelpers.category,
-    filter
+    isValid,
+    category,
+    filter,
 }
