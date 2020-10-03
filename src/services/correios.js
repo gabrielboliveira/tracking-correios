@@ -1,4 +1,4 @@
-const fetch = require('isomorphic-fetch');
+const axios = require('axios');
 
 const _get = require('lodash/get');
 const _chunk = require('lodash/chunk');
@@ -28,16 +28,17 @@ function fetchTracking (objects, configParams) {
 
         function fetchFromAPI (objects) {
             const options = {
-                method: 'POST',
-                body: createSOAPEnvelope(objects),
-                mode: 'no-cors',
                 headers: {
                     'Content-Type': 'text/xml; charset=utf-8',
-                    'cache-control': 'no-cache',
+                    'Cache-Control': 'no-cache',
                 },
             };
 
-            return fetch(CORREIOS_URL, options);
+            return axios.post(
+                CORREIOS_URL,
+                createSOAPEnvelope(objects),
+                options,
+            );
         }
 
         function parseFetchOutput (responses) {
@@ -50,20 +51,20 @@ function fetchTracking (objects, configParams) {
         }
 
         function parseSingleFetch (response) {
-            if (response.ok) {
-                return response.text()
-                    .then(parseXML)
+            if (response.status === 200) {
+                return Promise.resolve(response.data)
+                    .then(parseXml)
                     .then(extractSuccessObject)
                     .then(fixEvent);
             }
 
-            return response.text()
-                .then(parseXML)
+            return Promise.resolve(response.data)
+                .then(parseXml)
                 .then(extractErrorObject)
                 .then(throwErrorObject);
         }
 
-        function parseXML (text) {
+        function parseXml (text) {
             return parseStringPromise(text)
                 .catch(() => new TrackingError({
                     message: 'Não foi possível interpretar o XML de resposta.',
