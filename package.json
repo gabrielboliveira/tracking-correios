@@ -20,7 +20,6 @@
     "url": "https://github.com/gabrielboliveira/tracking-correios/issues"
   },
   "dependencies": {
-    "bluebird": "^3.7.2",
     "isomorphic-fetch": "^2.2.1",
     "lodash": "^4.17.20",
     "mock": "^0.1.1",
