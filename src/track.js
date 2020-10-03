@@ -1,7 +1,3 @@
-'use strict'
-
-const Promise = require("bluebird")
-
 const _filter = require('lodash/filter')
 const _extend = require('lodash/assignIn')
 const _difference = require('lodash/difference')

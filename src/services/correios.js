@@ -1,9 +1,4 @@
-'use strict'
-
-const Promise = require("bluebird")
-
 const fetch = require('isomorphic-fetch')
-fetch.Promise = Promise
 
 const _extend = require('lodash/assignIn')
 const _get = require('lodash/get')
@@ -33,7 +28,7 @@ function fetchTracking (objects, configParams) {
         function fetchFromCorreios (objects) {
             let callsChunked = _chunk(objects, configParams.limit)
 
-            return Promise.map(callsChunked, fetchFromAPI)
+            return Promise.all(callsChunked.map(fetchFromAPI))
         }
 
         function fetchFromAPI (objects) {
