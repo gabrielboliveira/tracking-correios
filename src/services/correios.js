@@ -133,8 +133,9 @@ function fetchTracking (objects, configParams) {
                 errors: error.errors,
             });
 
-            if (error.name === 'FetchError') {
+            if (error.isAxiosError && _get(error, 'response.status') === 500) {
                 trackingError.message = 'Erro ao se conectar ao o serviço dos Correios.';
+                trackingError.type = 'service_error';
                 trackingError.errors = [{
                     message: `Ocorreu um erro ao se conectar ao serviço dos Correios: ${ error.message }`,
                     service: 'service_error',
