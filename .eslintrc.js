@@ -22,6 +22,7 @@ module.exports = {
     rules: {
         'indent': ['error', 4, { 'SwitchCase': 1, 'MemberExpression': 1 }],
         'no-trailing-spaces': 'error',
+        'linebreak-style': ['error', 'unix'],
         'no-console': process.env.NODE_ENV === 'production' ? [
             'error',
             { 'allow': ['warn', 'error'] },
