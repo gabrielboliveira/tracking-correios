@@ -87,7 +87,7 @@ describe('tracking-correios (unit)', () => {
                     .replyWithFile(500, path.join(__dirname, '/fixtures/response-error-one.xml'));
 
                 return expect(Tracking.track('DU897123996BR')).to.eventually
-                    .be.rejectedWith('Erro no serviço do Correios.')
+                    .be.rejectedWith('Erro ao se conectar ao o serviço dos Correios.')
                     .and.be.an.instanceOf(TrackingError)
                     .and.have.property('type', 'service_error');
             });

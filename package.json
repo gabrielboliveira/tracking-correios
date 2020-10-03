@@ -21,9 +21,8 @@
     "url": "https://github.com/gabrielboliveira/tracking-correios/issues"
   },
   "dependencies": {
-    "isomorphic-fetch": "^2.2.1",
+    "axios": "^0.20.0",
     "lodash": "^4.17.20",
-    "mock": "^0.1.1",
     "xml2js": "^0.4.23"
   },
   "devDependencies": {
@@ -40,7 +39,6 @@
     "nock": "^13.0.4"
   },
   "resolutions": {
-    "node-fetch": "^2.6.1",
     "minimist": "^1.2.3",
     "kind-of": "^6.0.3"
   }
