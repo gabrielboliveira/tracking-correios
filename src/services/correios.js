@@ -1,19 +1,14 @@
 const fetch = require('isomorphic-fetch')
 
-const _extend = require('lodash/assignIn')
 const _get = require('lodash/get')
 const _chunk = require('lodash/chunk')
 const _flatten = require('lodash/flatten')
 
-const xml2js = require('xml2js')
+const { parseStringPromise } = require('xml2js')
 
-const Helpers = require('../utils/helpers')
-
+const { expand, arrayOf } = require('../utils/helpers')
 const TrackingError = require('../errors/tracking')
-
-const parseXMLString = xml2js.parseString
-
-const url = 'https://webservice.correios.com.br/service/rastro'
+const { CORREIOS_URL } = require('../utils/consts')
 
 function fetchTracking (objects, configParams) {
 
@@ -42,7 +37,7 @@ function fetchTracking (objects, configParams) {
                 }
             }
 
-            return fetch(url, options)
+            return fetch(CORREIOS_URL, options)
         }
 
         function parseFetchOutput(responses) {
@@ -69,38 +64,31 @@ function fetchTracking (objects, configParams) {
         }
 
         function parseXML (text) {
-            return new Promise( (resolve, reject) => {
-                parseXMLString(text, (err, object) => {
-                    if(!err) {
-                        resolve(object)
-                    } else {
-                        reject(new TrackingError({
-                            message: 'Não foi possível interpretar o XML de resposta.',
-                            type: 'service_error',
-                            errors: [{
-                                message: 'Ocorreu um erro ao tratar o XML retornado pela API dos Correios.',
-                                service: 'parsing_error'
-                            }]
-                        }))
-                    }
-                })
-            })
+            return parseStringPromise(text)
+                .catch(() => new TrackingError({
+                    message: 'Não foi possível interpretar o XML de resposta.',
+                    type: 'service_error',
+                    errors: [{
+                        message: 'Ocorreu um erro ao tratar o XML retornado pela API dos Correios.',
+                        service: 'parsing_error'
+                    }]
+                }));
         }
 
         function extractSuccessObject (object) {
             return _get(
                 object,
                 'soapenv:Envelope.soapenv:Body[0].ns2:buscaEventosListaResponse[0].return[0].objeto'
-            ).map(Helpers.expand)
+            ).map(expand)
         }
 
         function extractErrorObject (object) {
-            return Helpers.expand(_get(object, 'soapenv:Envelope.soapenv:Body[0].soapenv:Fault[0].faultstring[0]'))
+            return expand(_get(object, 'soapenv:Envelope.soapenv:Body[0].soapenv:Fault[0].faultstring[0]'))
         }
 
         function fixEvent(object) {
             return object.map(item => {
-                item.evento = Helpers.arrayOf(item.evento)
+                item.evento = arrayOf(item.evento)
                 return item
             })
         }
