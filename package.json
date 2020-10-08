@@ -39,7 +39,9 @@
     "nock": "^13.0.4"
   },
   "resolutions": {
-    "minimist": "^1.2.3",
-    "kind-of": "^6.0.3"
+    "debug": "^3.1.0",
+    "kind-of": "^6.0.3",
+    "lodash": "^4.17.19",
+    "minimist": "^1.2.3"
   }
 }
