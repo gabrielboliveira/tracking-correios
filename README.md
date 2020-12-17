@@ -1,7 +1,7 @@
 # tracking-correios
 
 [![Build Status](https://github.com/gabrielboliveira/tracking-correios/workflows/CI/badge.svg)](https://github.com/gabrielboliveira/tracking-correios/actions)
-[![npm version](https://badge.fury.io/js/tracking-correios.svg)](https://badge.fury.io/js/tracking-correios)
+![npm](https://img.shields.io/npm/v/tracking-correios)
 
 Módulo para consulta do rastreio de pacotes do Correios. Acessa diretamento a API do Correios (SRO).
 
