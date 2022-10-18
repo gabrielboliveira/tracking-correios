@@ -185,6 +185,7 @@ const VALID_INITIALS = {
     MY: 'Telegrama internacional entrante',
     MZ: 'Telegrama via Correios Online',
     NE: 'Tele Sena resgatada',
+    NL: 'Netherlands Post',
     NX: 'EDEI Encomenda não urgente',
     OA: 'Encomenda SEDEX (Etiqueta Lógica)',
     OB: 'Encomenda SEDEX (Etiqueta Lógica)',
