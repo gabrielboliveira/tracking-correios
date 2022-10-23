@@ -1,0 +1,40 @@
+name: Release to npm
+
+on:
+  release:
+    types: [created]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    name: Release new version to npm
+
+    steps:
+    - name: Set git to use LF
+      run: |
+        git config --global core.autocrlf false
+        git config --global core.eol lf
+
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - uses: actions/setup-node@v3
+      with:
+        node-version: 16
+        registry-url: 'https://registry.npmjs.org'
+
+    - name: Install dependencies
+      run: yarn install
+
+    - name: Build, lint and test
+      run: | 
+        yarn build
+        yarn lint
+        yarn test
+          
+#     - name: Release to npm
+#       run: npm publish
+#       env:
+#         NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        
