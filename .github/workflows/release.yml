@@ -2,7 +2,7 @@ name: Release to npm
 
 on:
   release:
-    types: [created]
+    types: [published]
 
 jobs:
   build:
@@ -29,9 +29,8 @@ jobs:
 
     - name: Build
       run: yarn build
-          
+
     - name: Release to npm
       run: npm publish
       env:
         NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-        
