@@ -279,6 +279,7 @@ const VALID_INITIALS = {
     SZ: 'SEDEX Agência',
     TC: 'Objeto para treinamento',
     TE: 'Objeto para treinamento',
+    TG: 'SEDEX',
     TR: 'Objeto Treinamento - Não gera pré-alerta',
     TS: 'Objeto para treinamento',
     UY: 'PPS IMPORTAÇÃO',
